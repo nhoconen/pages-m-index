@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 稳定入口与页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: #f4f8fa;
+      color: #1e2b32;
+      line-height: 1.65;
+      padding: 1.5rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* 网格卡片背景 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 6px 14px rgba(30, 43, 50, 0.04), 0 1px 4px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s ease, transform 0.15s ease;
+      border: 1px solid #e2ecf0;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 24px rgba(30, 120, 120, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 550;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+      color: #0e4f5a;
+    }
+
+    .card h3 small {
+      font-weight: 350;
+      font-size: 0.85rem;
+      color: #6b8a94;
+      margin-left: 0.35rem;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #2d434c;
+      margin-top: 0.25rem;
+    }
+
+    /* 蓝绿色点缀 */
+    .accent-border {
+      border-left: 4px solid #20a4a4;
+      padding-left: 1.2rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .accent-border p {
+      color: #1d5c66;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #d2edee;
+      color: #10656b;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-right: 0.4rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hero {
+      padding: 1.2rem 0 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 580;
+      line-height: 1.2;
+      color: #08333b;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .subhead {
+      font-size: 1.08rem;
+      color: #3d6973;
+      margin-top: 0.65rem;
+      max-width: 75%;
+    }
+
+    .quote-note {
+      background: #e6f3f2;
+      border-radius: 36px;
+      padding: 1.2rem 1.8rem;
+      margin: 2.2rem 0 1.8rem;
+      font-style: normal;
+      color: #0b4c50;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .quote-note::before {
+      content: "💬";
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      margin: 2.5rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #dae9ed;
+    }
+
+    .faq-mini h4 {
+      font-weight: 550;
+      color: #0f535d;
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+
+    .faq-item {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #e3eff2;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      color: #175e67;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .faq-item span {
+      color: #1b404a;
+    }
+
+    .info-footer {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #d0dfe4;
+      font-size: 0.86rem;
+      color: #4a6e79;
+      text-align: center;
+    }
+
+    .info-footer a {
+      color: #1d7b7b;
+      text-decoration: none;
+      border-bottom: 1px dotted #74b3b3;
+    }
+
+    .info-footer a:hover {
+      border-bottom: 1px solid #10656b;
+    }
+
+    .inline-link {
+      color: #148080;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 1px solid rgba(20,128,128,0.25);
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #0a5c5c;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero .subhead {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .quote-note {
+        padding: 1rem 1.2rem;
+        border-radius: 28px;
+      }
+
+      .faq-mini {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card h3 {
+        font-size: 1.15rem;
+      }
+    }
+
+    /* 稳定入口标记 */
+    .entry-remark {
+      display: inline-block;
+      background: #f0f9fa;
+      border-radius: 40px;
+      padding: 0.1rem 0.9rem 0.1rem 0.1rem;
+      font-size: 0.78rem;
+      color: #16646b;
+      margin-top: 0.3rem;
+    }
+
+    .entry-remark svg {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      fill: #1b7c7c;
+      margin-right: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- hero 简洁博客 -->
+    <div class="hero">
+      <h1>一份页面说明 · 关于入口的稳定感</h1>
+      <div class="subhead">
+        有时我们需要的不是更多选择，而是一个可以安静记住的地址。<br>
+        这里整理了几段叙述，关于这个站点的用途与边界。
+      </div>
+    </div>
+
+    <!-- 导语 + 引用提示 -->
+    <div class="accent-border">
+      <p>如果只是想在信息堆里找到一处结构清晰的体育内容聚合，<a href="https://sports-site-igame.com" class="inline-link">爱游戏</a> 可能恰好提供了那种「不用反复确认」的体验。它不追求花哨的动效，也没有过度的推送，更像一本经常更新的体育笔记。</p>
+    </div>
+
+    <!-- 多段正文 · 网格卡片 -->
+    <div class="cards-grid">
+      <div class="card">
+        <h3>页面即入口 <small>· 说明</small></h3>
+        <p>很多时候，一个站点的首页就是唯一的门牌号。把 <a href="https://sports-site-igame.com" class="inline-link">爱游戏</a> 放在书签栏，或者直接敲进地址栏——它一直在那里，版式稳定，加载利落。没有多余的跳转，没有弹窗式的干扰，这本身已经是一种克制。</p>
+      </div>
+      <div class="card">
+        <h3>内容与节奏 <small>· 叙述</small></h3>
+        <p>从赛事动态到观察笔记，页面以文章标题加导语的方式呈现，每段正文之间有自然的停顿。你不需要在每个链接前犹豫，因为它的链接通常直接、语义清晰。比如这句话里嵌入的 <a href="https://sports-site-igame.com" class="inline-link">爱游戏</a>，就是最朴素的入口。</p>
+      </div>
+      <div class="card">
+        <h3>边距与呼吸 <small>· 视觉</small></h3>
+        <p>蓝绿色不是装饰，而是一种提示：内容在这里，不拥挤。网格卡片的间距、行高、留白都经过调整，即使在手机屏幕上，段落依然保持可读性。没有大面积的色块，只有淡淡的边界和点缀。</p>
+      </div>
+    </div>
+
+    <!-- 引用提示块 (更偏叙述) -->
+    <div class="quote-note">
+      <span>“稳定入口的意思是：当你想起它的时候，它还在原来的地方，用同样的方式回应你。” —— 这大概就是首页存在的理由。</span>
+    </div>
+
+    <!-- 场景 + 提示混合 -->
+    <div style="margin-bottom: 1.8rem;">
+      <span class="badge">📌 适用场景</span>
+      <span class="badge">🧭 固定书签</span>
+      <span class="badge">📱 移动端友好</span>
+    </div>
+
+    <p style="margin-bottom: 1.2rem; color: #1b4a53; font-size: 0.97rem;">
+      如果你常浏览体育资讯，又不想被算法反复推荐同一类内容，那么一个直接、少噪音的页面会省去很多筛选时间。<a href="https://sports-site-igame.com" class="inline-link">爱游戏</a> 的首页恰好保留了这种特质：标题克制，导语精炼，正文分段清晰，在手机和电脑上都能获得一致的阅读节奏。
+    </p>
+
+    <!-- FAQ 摘要 (不同角度) -->
+    <div class="faq-mini">
+      <h4>常见疑问 · 摘要</h4>
+      <div class="faq-item">
+        <strong>Q:</strong> <span>这个站点每天更新吗？</span>
+      </div>
+      <div class="faq-item">
+        <strong>A:</strong> <span>内容保持一定频率，但不会刷屏。首页会展示最新的文章标题和导语，你可以自己决定是否深入阅读。</span>
+      </div>
+      <div class="faq-item">
+        <strong>Q:</strong> <span>移动端访问会不会变形？</span>
+      </div>
+      <div class="faq-item">
+        <strong>A:</strong> <span>页面采用流式布局，卡片和文字在窄屏上会自动调整间距，不需要双指缩放。</span>
+      </div>
+      <div class="faq-item">
+        <strong>Q:</strong> <span>入口链接稳定吗？</span>
+      </div>
+      <div class="faq-item">
+        <strong>A:</strong> <span>是的。直接使用 <a href="https://sports-site-igame.com" class="inline-link">爱游戏</a> 作为固定地址，没有中间跳转。</span>
+      </div>
+    </div>
+
+    <!-- 访问句 / 收尾叙述 -->
+    <p style="margin: 1.5rem 0 0.5rem; color: #186269; font-size: 1rem; border-left: 3px solid #31a09e; padding-left: 1.2rem;">
+      最后，如果你恰好需要一个不吵不闹的体育阅读起点，不妨把 <a href="https://sports-site-igame.com" class="inline-link">爱游戏</a> 留在标签栏里。它不承诺什么，但至少每次打开，你都能直接看到内容，而不是先经过一片空白。
+    </p>
+
+    <!-- footer -->
+    <div class="info-footer">
+      <span>📄 页面说明 · 稳定入口记述 · </span>
+      <a href="https://sports-site-igame.com">爱游戏</a>
+      <span> · 2025</span>
+    </div>
+  </div>
+</body>
+</html>
